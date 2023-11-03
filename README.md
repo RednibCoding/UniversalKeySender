@@ -14,6 +14,8 @@ Run the following .NET command:
 dotnet publish -c Release -r win-x64 --self-contained true -p:PublishSingleFile=true -p:PublishTrimmed=true
 ```
 
+This will generate a self-contained executable that you can run on any Windows x64 machine without needing to install additional dependencies.
+
 ## How to Use
 
 #### 1. Clone the repository or download the latest release.
@@ -33,8 +35,26 @@ MyTargetWindow ; The title of the target window
 Replace `MyTargetWindow` with the title of the window you want to target, and specify your desired keycodes and delays.
 
 #### 3. Run UniversalKeySender.exe
+This will execute the following sequence:
 
-This will generate a self-contained executable that you can run on any Windows x64 machine without needing to install additional dependencies.
+- a delay of 200 milliseconds
+- a tab-key press
+- a delay of 200 milliseconds
+- 1-key press
+- a delay of 30000 milliseconds
+
+on the window with the title "MyTargetWindow".
+
+> **Note 1:** Everything following a semicolon (`;`) will be treated as a comment and will not be processed.
+
+> **Note 2:** Arbitrary numbers of empty lines are permitted between commands for improved readability.
+
+## Structure of the `keys.txt` File
+
+- The initial line should specify the window name.
+- Subsequent lines should consist of delay-keycode pairs, which define the key automation behavior.
+- The final line must specify a delay, indicating the pause after the last action.
+
 
 ## Keycode Reference
 You will need to refer to the virtual key codes which can be found in the [Microsoft Documentation](https://learn.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes).
