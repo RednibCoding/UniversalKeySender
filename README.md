@@ -8,11 +8,16 @@ Universal Key Sender is a tool that allows users to automate keypress sequences 
 - **Customizable Delays**: Define the delay in milliseconds before each keypress.
 - **Repeat Sequences**: Specify a final delay after which the sequence of keypresses will repeat.
 
+## How to build
+Run the following .NET command:
+```sh
+dotnet publish -c Release -r win-x64 --self-contained true -p:PublishSingleFile=true -p:PublishTrimmed=true
+```
+
 ## How to Use
 
-1. Clone the repository or download the latest release.
-2. Create a `keys.txt` file in the same directory as the executable with the following format:
-
+#### 1. Clone the repository or download the latest release.
+#### 2. Create a `keys.txt` file in the same directory as the `UniversalKeySender` executable with the following format:
 ```
 MyTargetWindow ; The title of the target window
 
@@ -25,16 +30,11 @@ MyTargetWindow ; The title of the target window
 30000 ; Delay of 30000 milliseconds (30 seconds)
 ```
 
-
 Replace `MyTargetWindow` with the title of the window you want to target, and specify your desired keycodes and delays.
 
-3. Build the tool using the provided .NET command:
-
-```sh
-dotnet publish -c Release -r win-x64 --self-contained true -p:PublishSingleFile=true -p:PublishTrimmed=true
+#### 3. Run UniversalKeySender.exe
 
 This will generate a self-contained executable that you can run on any Windows x64 machine without needing to install additional dependencies.
-```
 
 ## Keycode Reference
 You will need to refer to the virtual key codes which can be found in the [Microsoft Documentation](https://learn.microsoft.com/en-us/windows/win32/inputdev/virtual-key-codes).
